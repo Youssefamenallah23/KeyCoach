@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["dom", "esnext"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "rootDir": "src",
+    "outDir": ".selftest"
+  },
+  "include": [
+    "src/lib/notes.ts",
+    "src/lib/lessons.ts",
+    "src/lib/scoring.ts",
+    "src/lib/coach.ts",
+    "src/lib/practice.ts",
+    "src/lib/keyboardLayout.ts",
+    "src/lib/schedule.ts",
+    "src/lib/midi.ts",
+    "src/lib/simulate.ts",
+    "src/lib/timing.ts",
+    "src/lib/demo.ts",
+    "src/lib/voicing.ts"
+  ]
+}

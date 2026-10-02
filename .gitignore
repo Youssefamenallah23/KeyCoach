@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+.env*
+!.env.example
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+next-env.d.ts
+tsconfig.tsbuildinfo
+.selftest/
+.vercel

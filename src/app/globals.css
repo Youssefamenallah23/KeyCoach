@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/*
+ * Studio-at-night surface: near-black base, a warm off-axis glow top-left and a
+ * cool one top-right. No purple/blue SaaS gradient.
+ */
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  background:
+    radial-gradient(1100px 620px at 10% -12%, rgba(233, 176, 85, 0.13), transparent 62%),
+    radial-gradient(900px 520px at 92% -6%, rgba(111, 194, 196, 0.09), transparent 58%),
+    #0b0a0d;
+}
+
+.grid-texture {
+  background-image: radial-gradient(rgba(244, 239, 230, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #2e2839 transparent;
+}
+
+.thin-scroll::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: #2e2839;
+  border-radius: 999px;
+}
+
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-line/70 bg-panel/70 backdrop-blur-[2px];
+  }
+
+  .panel-quiet {
+    @apply rounded-xl border border-line/60 bg-panel2/40;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-panel2/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted;
+  }
+
+  .chip-amber {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-amber/40 bg-amber/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-amber-soft;
+  }
+
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl border border-line bg-panel2/80 px-4 py-2.5 text-sm font-semibold text-ink transition duration-150 hover:border-amber/50 hover:bg-panel2 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber/70 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .btn-primary {
+    @apply border-amber/60 bg-amber text-[#201704] shadow-[0_6px_0_0_rgba(169,122,44,0.9)] hover:bg-amber-soft hover:border-amber active:shadow-[0_3px_0_0_rgba(169,122,44,0.9)];
+  }
+
+  .btn-ghost {
+    @apply border-transparent bg-transparent text-muted hover:border-line hover:text-ink;
+  }
+
+  .label-xs {
+    @apply text-[10px] font-semibold uppercase tracking-[0.18em] text-muted;
+  }
+
+  .meter-track {
+    @apply h-2 w-full overflow-hidden rounded-full bg-panel2;
+  }
+
+  .meter-fill {
+    @apply h-full rounded-full bg-amber transition-[width] duration-500;
+  }
+}
+
+/*
+ * Accessibility: honour the operating system's reduced motion preference, and
+ * give every interactive element a visible focus ring. The piano keys are pointer
+ * targets driven by the physical keyboard, so they are marked tabIndex -1, but
+ * every control is otherwise reachable with Tab.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Same rule, forced on by the in-app setting. */
+.motion-off *,
+.motion-off *::before,
+.motion-off *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+:focus-visible {
+  outline: 2px solid #e9b055;
+  outline-offset: 2px;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
